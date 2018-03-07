@@ -4,7 +4,8 @@
   "description": "Easily augment your Kafka topics by using node.js streams. Consume, map, filter, reduce and publish with automated backpressure.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc -c .jsdoc.json -d docs ."
   },
   "repository": {
     "type": "git",
