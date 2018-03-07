@@ -1,0 +1,31 @@
+{
+  "name": "scramjet-kafka",
+  "version": "1.0.0",
+  "description": "Easily augment your Kafka topics by using node.js streams. Consume, map, filter, reduce and publish with automated backpressure.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/signicode/scramjet-kafka.git"
+  },
+  "author": "Signicode <open-source@signicode.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/signicode/scramjet-kafka/issues"
+  },
+  "homepage": "https://github.com/signicode/scramjet-kafka#readme",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "kafka-node": "^2.4.1",
+    "scramjet": "^4.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-node": "^6.0.0"
+  }
+}
