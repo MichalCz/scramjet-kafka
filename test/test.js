@@ -5,43 +5,33 @@ if (!process.env.KAFKA_URL) {
     process.exit(0);
 }
 
-const {Client, Producer} = require('kafka-node');
+const kafkaLogging = require('kafka-node/logging');
+kafkaLogging.setLoggerProvider(() => console);
+
 const scramjet = require("scramjet");
+const {consume, augment} = require("../");
 
-const client1 = new Client(process.env.KAFKA_URL, "scramjet-test1");
-const client2 = new Client(process.env.KAFKA_URL, "scramjet-test2");
-const client3 = new Client(process.env.KAFKA_URL, "scramjet-test3");
-
-const producer = new Producer(client1);
-const createTopics = () => new Promise((res, rej) => {
-    producer.createTopics(["sj-test1", "sj-test2"], true, (err) => err ? rej(err) : res());
-});
-
-const ready = () => new Promise((res, rej) => {
-    producer.on("ready", res);
-    producer.on("error", rej);
-});
+const connection = process.env.KAFKA_DIRECT ? {
+    kafkaOptions: {kafkaHost: process.env.KAFKA_URL}
+} : {
+    zkOptions: {connectionString: process.env.KAFKA_URL}
+};
 
 (async () => {
-    const {consume, augment} = require("../");
-    console.error("Running test on " + process.env.KAFKA_URL);
-
-    await ready();
-    console.error("- Ready");
-    await createTopics();
-    console.error("- Created topics");
+    console.error("Running test on ", connection);
 
     await Promise.all([
         scramjet.fromArray([1,2,3,4])
             .map(a => ({a, b: a+a, c: a**a}))
             .each(console.log)
-            .produceKafka(client1, "sj-test1")
+            .JSONStringify()
+            .produceKafka(connection, "sj-test1")
             .then(
                 () => console.log('- Produced stream')
             )
         ,
         augment(
-            client2,
+            connection,
             "sj-test1",
             stream => stream.each(console.log).map(({a,c}) => Object.assign({x: c+a})),
             "sj-test2"
@@ -50,7 +40,7 @@ const ready = () => new Promise((res, rej) => {
                 () => console.log('- Augmented stream')
             )
         ,
-        consume(client3, "sj-test2")
+        consume(connection, "sj-test2")
             .until(({a}) => a > 3)
             .each(x => console.error(" + ", x))
             .whenEnd()
@@ -58,9 +48,7 @@ const ready = () => new Promise((res, rej) => {
     ]);
 
 })()
-    .then(
-        () => (client1.close(), client2.close(), client3.close())
-    ).catch(
+    .catch(
         (e) => {
             console.error(e.stack);
             process.exit(127);
