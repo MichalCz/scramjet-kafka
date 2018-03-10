@@ -66,19 +66,14 @@ await (
 -   [plugin](#plugin)
     -   [viaKafka](#viakafka)
     -   [produce](#produce)
--   [getConnection](#getconnection)
 
 ## main
-
-[lib/main.js:12-51](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L12-L51 "Source code on GitHub")
 
 Scramjet Kafka module exports
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### augment
-
-[lib/main.js:28-32](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L28-L32 "Source code on GitHub")
 
 Fetches a stream from Kafka topic performs declared operations and publishes to the another topic.
 
@@ -97,8 +92,6 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ### consume
 
-[lib/main.js:42-50](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L42-L50 "Source code on GitHub")
-
 Consume a topic from kafka and return a new KafkaStream
 
 **Parameters**
@@ -107,8 +100,6 @@ Consume a topic from kafka and return a new KafkaStream
 -   `topics` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | Topic)>** Topics to pull from Kafka (optional, default `[]`)
 
 ## KafkaStream
-
-[lib/kafka-stream.js:10-112](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L10-L112 "Source code on GitHub")
 
 **Extends DataStream**
 
@@ -123,13 +114,9 @@ A [scramjet.DataStream](../scramjet/blob/master/docs/data-stream.md) augmented w
 
 ### connect
 
-[lib/kafka-stream.js:44-55](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L44-L55 "Source code on GitHub")
-
 Opens up connection to kafka and starts streaming.
 
 ### connect
-
-[lib/kafka-stream.js:44-55](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L44-L55 "Source code on GitHub")
 
 Connection options from `kafka-node`
 
@@ -143,8 +130,6 @@ Connection options from `kafka-node`
 
 ### addTopics
 
-[lib/kafka-stream.js:67-72](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L67-L72 "Source code on GitHub")
-
 Add topics to the stream
 
 **Parameters**
@@ -154,8 +139,6 @@ Add topics to the stream
 
 ### removeTopics
 
-[lib/kafka-stream.js:80-89](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L80-L89 "Source code on GitHub")
-
 Removes topics from the stream
 
 **Parameters**
@@ -164,13 +147,9 @@ Removes topics from the stream
 
 ### commit
 
-[lib/kafka-stream.js:95-98](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L95-L98 "Source code on GitHub")
-
 Commits at the current position
 
 ### setOffset
-
-[lib/kafka-stream.js:107-110](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/kafka-stream.js#L107-L110 "Source code on GitHub")
 
 Sets read offset at current position
 
@@ -182,14 +161,10 @@ Sets read offset at current position
 
 ## plugin
 
-[lib/main.js:59-95](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L59-L95 "Source code on GitHub")
-
 [Scramjet DataStream](https://scramjet.eu/docs/data-stream.html) plugin - the following methods are added
 to all scramjet streams
 
 ### viaKafka
-
-[lib/main.js:70-73](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L70-L73 "Source code on GitHub")
 
 Plugin to scramjet::DataStream - push to kafka and pull on the other end.
 
@@ -204,8 +179,6 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ### produce
 
-[lib/main.js:83-94](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L83-L94 "Source code on GitHub")
-
 Send the stream to the specified Kafka topic.
 
 **Parameters**
@@ -217,25 +190,11 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 ## 
 
-[lib/main.js:59-95](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/main.js#L59-L95 "Source code on GitHub")
-
 **Properties**
 
 -   `topic` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** topic name in kafka
 -   `offset` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** where to start reading
 -   `partition` **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** kafka partition number
-
-## getConnection
-
-[lib/util.js:11-17](https://github.com/MichalCz/scramjet-kafka/blob/54b22bccc405959c759aee8ee4b81e507d7dc86b/lib/util.js#L11-L17 "Source code on GitHub")
-
-Creates a new client or passes the given one
-
-**Parameters**
-
--   `conn` **(Client | ZKConnectionOptions)** connection
-
-Returns **Client** 
 
 # License
 

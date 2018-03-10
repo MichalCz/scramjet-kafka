@@ -5,7 +5,7 @@
   "main": "lib/main.js",
   "scripts": {
     "test": "test/test.sh",
-    "readme": "documentation readme lib/ -c build/readme.yml -s Documentation --github",
+    "readme": "documentation readme lib/ -c build/readme.yml -s Documentation",
     "preversion": "npm run readme && npm run test"
   },
   "repository": {
