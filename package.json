@@ -22,11 +22,11 @@
     "node": ">=8"
   },
   "dependencies": {
-    "documentation": "^6.1.0",
     "kafka-node": "^2.4.1",
-    "scramjet": "^4.7"
+    "scramjet": "^4.8.0"
   },
   "devDependencies": {
+    "documentation": "^6.1.0",
     "eslint": "^4.17.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-node": "^6.0.0"
