@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "kafka-node": "^2.6.1",
-    "scramjet": "^4.14.1"
+    "scramjet": "^4.16.1"
   },
   "devDependencies": {
     "documentation": "^6.3.3",
