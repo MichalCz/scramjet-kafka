@@ -1,6 +1,6 @@
 {
   "name": "scramjet-kafka",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Easily augment your Kafka topics by using node.js streams. Consume, map, filter, reduce and publish with automated backpressure.",
   "main": "lib/main.js",
   "scripts": {
