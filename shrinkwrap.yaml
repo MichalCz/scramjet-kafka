@@ -1,0 +1,7 @@
+dependencies:
+  scramjet-kafka: 'link:'
+registry: 'https://registry.npmjs.org/'
+shrinkwrapMinorVersion: 8
+shrinkwrapVersion: 3
+specifiers:
+  scramjet-kafka: 'link:'
